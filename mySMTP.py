@@ -19,14 +19,14 @@ class SMTPException(Exception):
 class SMTPServerDisconnected(SMTPException):
 	pass
 
-class SMTPConnectError(SMTPResponseException):
-	pass
-
 class SMTPResponseException(SMTPException):
 	def __init__(self, code, msg):
 		self.smtp_code = code
 		self.smtp_error = msg
 		self.args = (code, msg)
+
+class SMTPConnectError(SMTPResponseException):
+	pass
 
 
 class SMTP:
